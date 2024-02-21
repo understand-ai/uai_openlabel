@@ -40,7 +40,9 @@ B = TypeVar("B", bound="BooleanData")
 
 @dataclass
 class BooleanData(JsonSnakeCaseSerializableMixin):
-    val: bool = field(default_factory=lambda: no_default(field="BooleanData.val"), metadata=required)
+    val: bool = field(
+        default_factory=lambda: no_default(field="BooleanData.val"), metadata=required
+    )
 
     attributes: Optional["Attributes"] = field(default=None)
     coordinate_system: Optional[CoordinateSystemUid] = field(default=None)
@@ -89,7 +91,9 @@ N = TypeVar("N", bound="NumberData")
 
 @dataclass
 class NumberData(JsonSnakeCaseSerializableMixin):
-    val: Number = field(default_factory=lambda: no_default(field="NumberData.val"), metadata=required)
+    val: Number = field(
+        default_factory=lambda: no_default(field="NumberData.val"), metadata=required
+    )
 
     attributes: Optional["Attributes"] = field(default=None)
     coordinate_system: Optional[CoordinateSystemUid] = field(default=None)
@@ -136,7 +140,9 @@ T = TypeVar("T", bound="TextData")
 
 @dataclass
 class TextData(JsonSnakeCaseSerializableMixin):
-    val: str = field(default_factory=lambda: no_default(field="TextData.val"), metadata=required)
+    val: str = field(
+        default_factory=lambda: no_default(field="TextData.val"), metadata=required
+    )
 
     attributes: Optional["Attributes"] = field(default=None)
     coordinate_system: Optional[CoordinateSystemUid] = field(default=None)
@@ -256,7 +262,9 @@ class Attributes(JsonSnakeCaseSerializableMixin, Iterable[GenericData]):
         )
 
     @classmethod
-    def dynamic_attributes_example(cls: builtins.type[A], toggle_value: bool = False) -> A:
+    def dynamic_attributes_example(
+        cls: builtins.type[A], toggle_value: bool = False
+    ) -> A:
         """Contains attributes meant to be dynamic. Use the toggle_value switch to vary them."""
         return cls(
             boolean=[BooleanData.dynamic_example(toggle_value)],

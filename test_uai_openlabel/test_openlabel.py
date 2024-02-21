@@ -21,7 +21,10 @@ def test_adds_root_key_when_serializing() -> None:
     ol = OpenLabel()
     serialized = ol.to_dict(exclude_none=True)
     assert list(serialized.keys()) == ["openlabel"]
-    assert isinstance(serialized["openlabel"], dict) and "metadata" in serialized["openlabel"].keys()
+    assert (
+        isinstance(serialized["openlabel"], dict)
+        and "metadata" in serialized["openlabel"].keys()
+    )
 
 
 def test_deserializes_correctly_with_root_key_given() -> None:

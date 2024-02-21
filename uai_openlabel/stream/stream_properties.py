@@ -69,4 +69,8 @@ class CustomCameraStreamProperties(JsonSnakeCaseSerializableMixin):
     intrinsics_custom: Optional[CustomCameraIntrinsics] = field(default=None)
 
 
-StreamProperties = Union[PinholeCameraStreamProperties, FisheyeCameraStreamProperties, CustomCameraStreamProperties]
+StreamProperties = Union[
+    PinholeCameraStreamProperties,
+    FisheyeCameraStreamProperties,
+    CustomCameraStreamProperties,
+]

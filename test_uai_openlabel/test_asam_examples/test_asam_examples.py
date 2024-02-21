@@ -19,7 +19,9 @@ from uai_openlabel import OpenLabel
 
 
 def test_db_openlabel_example() -> None:
-    content = get_json_content("test_uai_openlabel/test_asam_examples/modified_19_vegetation_curve_19.1_labels.json")
+    content = get_json_content(
+        "test_uai_openlabel/test_asam_examples/modified_19_vegetation_curve_19.1_labels.json"
+    )
     parsed = OpenLabel.from_dict(content)
     back_to_dict = dict(parsed.to_dict(exclude_none=True))
 
@@ -28,7 +30,9 @@ def test_db_openlabel_example() -> None:
 
 
 def test_bbox_simple() -> None:
-    content = get_json_content("test_uai_openlabel/test_asam_examples/openlabel100_test_bbox_simple.json")
+    content = get_json_content(
+        "test_uai_openlabel/test_asam_examples/openlabel100_test_bbox_simple.json"
+    )
     parsed = OpenLabel.from_dict(content)
     back_to_dict = dict(parsed.to_dict(exclude_none=True))
 
@@ -37,7 +41,9 @@ def test_bbox_simple() -> None:
 
 
 def test_bbox_simple_with_attributes() -> None:
-    content = get_json_content("test_uai_openlabel/test_asam_examples/openlabel100_test_bbox_simple_attributes.json")
+    content = get_json_content(
+        "test_uai_openlabel/test_asam_examples/openlabel100_test_bbox_simple_attributes.json"
+    )
     parsed = OpenLabel.from_dict(content)
     back_to_dict = dict(parsed.to_dict(exclude_none=True))
 
@@ -46,7 +52,9 @@ def test_bbox_simple_with_attributes() -> None:
 
 
 def test_example_cuboids() -> None:
-    content = get_json_content("test_uai_openlabel/test_asam_examples/openlabel100_example_cuboids.json")
+    content = get_json_content(
+        "test_uai_openlabel/test_asam_examples/openlabel100_example_cuboids.json"
+    )
     parsed = OpenLabel.from_dict(content)
     back_to_dict = dict(parsed.to_dict(exclude_none=True))
 

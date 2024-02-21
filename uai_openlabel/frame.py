@@ -101,7 +101,9 @@ class Frame(JsonSnakeCaseSerializableMixin):
             frame_properties=FrameProperties(
                 timestamp=timestamp,
                 transforms={
-                    f"{src}_to_{dst}": Transform.no_rotation_example(src=src, dst=dst, translation=transform_translation)
+                    f"{src}_to_{dst}": Transform.no_rotation_example(
+                        src=src, dst=dst, translation=transform_translation
+                    )
                 },
             ),
             objects=frame_objects,

@@ -34,5 +34,11 @@ class FrameInterval(JsonSnakeCaseSerializableMixin):
     frame_intervals summarize the frame intervals that contain information for this ASAM OpenLABEL annotation file.
     """
 
-    frame_start: FrameUid = field(default_factory=lambda: no_default(field="FrameInterval.frame_start"), metadata=required)
-    frame_end: FrameUid = field(default_factory=lambda: no_default(field="FrameInterval.frame_end"), metadata=required)
+    frame_start: FrameUid = field(
+        default_factory=lambda: no_default(field="FrameInterval.frame_start"),
+        metadata=required,
+    )
+    frame_end: FrameUid = field(
+        default_factory=lambda: no_default(field="FrameInterval.frame_end"),
+        metadata=required,
+    )

@@ -41,7 +41,8 @@ class Matrix4x4TransformData:
     """
 
     matrix4x4: tuple[Number, ...] = field(
-        default_factory=lambda: no_default(field="Matrix4x4TransformData.matrix4x4"), metadata=required
+        default_factory=lambda: no_default(field="Matrix4x4TransformData.matrix4x4"),
+        metadata=required,
     )
 
     def __post_init__(self) -> None:
@@ -57,10 +58,12 @@ class QuaternionTransformData(JsonSnakeCaseSerializableMixin):
     """
 
     quaternion: tuple[Number, Number, Number, Number] = field(
-        default_factory=lambda: no_default(field="QuaternionTransformData.quaternion"), metadata=required
+        default_factory=lambda: no_default(field="QuaternionTransformData.quaternion"),
+        metadata=required,
     )
     translation: tuple[Number, Number, Number] = field(
-        default_factory=lambda: no_default(field="QuaternionTransformData.translation"), metadata=required
+        default_factory=lambda: no_default(field="QuaternionTransformData.translation"),
+        metadata=required,
     )
 
 
@@ -72,11 +75,13 @@ class EulerTransformData(JsonSnakeCaseSerializableMixin):
     """
 
     euler_angles: tuple[Radian, Radian, Radian] = field(
-        default_factory=lambda: no_default(field="EulerTransformData.euler_angles"), metadata=required
+        default_factory=lambda: no_default(field="EulerTransformData.euler_angles"),
+        metadata=required,
     )
     sequence: Optional[str] = field(default="ZYX")
     translation: tuple[Number, Number, Number] = field(
-        default_factory=lambda: no_default(field="EulerTransformData.translation"), metadata=required
+        default_factory=lambda: no_default(field="EulerTransformData.translation"),
+        metadata=required,
     )
 
 
@@ -94,15 +99,25 @@ class Transform(JsonSnakeCaseSerializableMixin):
     transform_src_to_dst: This is the transform expressed in algebraic form, for example, as a 4x4 matrix enclosing a 3D rotation and a 3D translation between the coordinate systems.
     """
 
-    dst: CoordinateSystemUid = field(default_factory=lambda: no_default(field="Transform.dst"), metadata=required)
-    src: CoordinateSystemUid = field(default_factory=lambda: no_default(field="Transform.src"), metadata=required)
-    transform_src_to_dst: Union[Matrix4x4TransformData, QuaternionTransformData, EulerTransformData] = field(
-        default_factory=lambda: no_default(field="Transform.transform_src_to_dst"), metadata=required
+    dst: CoordinateSystemUid = field(
+        default_factory=lambda: no_default(field="Transform.dst"), metadata=required
+    )
+    src: CoordinateSystemUid = field(
+        default_factory=lambda: no_default(field="Transform.src"), metadata=required
+    )
+    transform_src_to_dst: Union[
+        Matrix4x4TransformData, QuaternionTransformData, EulerTransformData
+    ] = field(
+        default_factory=lambda: no_default(field="Transform.transform_src_to_dst"),
+        metadata=required,
     )
 
     @classmethod
     def no_rotation_example(
-        cls: type[T], src: CoordinateSystemUid, dst: CoordinateSystemUid, translation: tuple[float, float, float]
+        cls: type[T],
+        src: CoordinateSystemUid,
+        dst: CoordinateSystemUid,
+        translation: tuple[float, float, float],
     ) -> T:
         # fmt: off
         translation_without_rotation = (
@@ -112,4 +127,10 @@ class Transform(JsonSnakeCaseSerializableMixin):
             0.0, 0.0, 0.0, 1.0
         )
         # fmt: on
-        return cls(src=src, dst=dst, transform_src_to_dst=Matrix4x4TransformData(matrix4x4=translation_without_rotation))
+        return cls(
+            src=src,
+            dst=dst,
+            transform_src_to_dst=Matrix4x4TransformData(
+                matrix4x4=translation_without_rotation
+            ),
+        )
