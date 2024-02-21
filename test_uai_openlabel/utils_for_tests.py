@@ -18,7 +18,7 @@ from pathlib import Path
 from typing import Any, cast
 
 
-def get_absolute_path(path_relative_to_repo_base_dir: str):
+def get_absolute_path(path_relative_to_repo_base_dir: str) -> Path:
     cwd = Path(os.getcwd())
 
     repo_name = "uai_openlabel"
