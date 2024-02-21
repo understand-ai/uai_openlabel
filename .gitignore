@@ -1,0 +1,11 @@
+venv/
+.venv/
+.python-version
+.idea/
+.vscode/
+.vscode/settings.json
+**/*.pyc
+**/*.pytest_cache
+.dmypy.json
+.mypy_cache
+.pytest_cache
