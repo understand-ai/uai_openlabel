@@ -39,6 +39,11 @@ jobs:
         poetry run ruff .
       continue-on-error: false
 
+    - name: Format with black
+      run: |
+        poetry run black .
+      continue-on-error: false
+
     - name: Test with pytest
       run: |
         python -m poetry run python -m pytest -v test_uai_openlabel
