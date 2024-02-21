@@ -71,9 +71,7 @@ def test_values_are_converted_and_tested_for_length(
         vals_not_needing_conversion = [conversion_source(1.1)] * data_length
 
         caplog.clear()
-        data = class_name(
-            val=vals_not_needing_conversion, name="example", **extra_init_kwargs
-        )
+        data = class_name(val=vals_not_needing_conversion, name="example", **extra_init_kwargs)
 
         assert len(caplog.messages) == 0
         assert all(isinstance(v, conversion_source) for v in data.val)

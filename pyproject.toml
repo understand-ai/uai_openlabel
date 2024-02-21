@@ -22,10 +22,6 @@ black = {extras = ["d"], version = "^22.3.0"}
 deepdiff = "^6.7.1"
 ruff = "^0.2.0"
 
-[tool.ruff.lint]
-select = [ "E","F","W","I","N","TRY","RUF" ]
-ignore = [ "E501", "E731", "TRY003", "W291" ]
-
 [[tool.poetry.source]]
 name = "PyPI"
 priority = "default"
@@ -33,3 +29,14 @@ priority = "default"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+
+[tool.black]
+line-length = 128
+target-version = ['py39', 'py310', 'py311']
+extend-exclude = "^/uai_openlabel"
+
+[tool.ruff.lint]
+select = [ "E","F","W","I","N","TRY","RUF" ]
+ignore = [ "E501", "E731", "TRY003", "W291" ]
+
