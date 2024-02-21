@@ -27,7 +27,7 @@ def get_absolute_path(path_relative_to_repo_base_dir: str) -> Path:
     cwd_adjusted_file_path = Path("/" + "/".join(cwd_adjusted_parts))
 
     if not cwd_adjusted_file_path.exists():
-        raise FileNotFoundError(f"Could not find the file {cwd_adjusted_file_path}. Current working dir is {os.getcwd()} with the children {[i for i in Path(os.getcwd()).iterdir()]}")
+        raise FileNotFoundError(f"Could not find the file {cwd_adjusted_file_path}. Current working dir is {os.getcwd()}")
     return cwd_adjusted_file_path
 
 
