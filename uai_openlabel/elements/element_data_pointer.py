@@ -38,11 +38,14 @@ __all__: list[str] = []
 @dataclass
 class ElementDataPointer(JsonSnakeCaseSerializableMixin):
     frame_intervals: Sequence[FrameInterval] = field(
-        default_factory=lambda: no_default(field="ElementDataPointer.frame_intervals"), metadata=required
+        default_factory=lambda: no_default(field="ElementDataPointer.frame_intervals"),
+        metadata=required,
     )
     """List of frame intervals of the element data pointed by this pointer."""
 
-    attribute_pointers: Optional[Mapping[AttributeName, GenericDataType]] = field(default=None)
+    attribute_pointers: Optional[Mapping[AttributeName, GenericDataType]] = field(
+        default=None
+    )
     """
     This is a JSON object which contains pointers to the attributes of the element data pointed by this pointer. 
     The attributes pointer keys shall be the \"name\" of the attribute of the element data this pointer points to.

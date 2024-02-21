@@ -25,21 +25,29 @@ def test_unpack_sequence_of_length_1(data: Any) -> None:
 
     assert (
         unpack_sequence_of_length_1(
-            seq=data, field_name_for_logging=logging_snippet, stand_in_for_empty_seq=data.__class__(1.1)
+            seq=data,
+            field_name_for_logging=logging_snippet,
+            stand_in_for_empty_seq=data.__class__(1.1),
         )
         == data
     )
     assert (
         unpack_sequence_of_length_1(
-            seq=[data], field_name_for_logging=logging_snippet, stand_in_for_empty_seq=data.__class__(1.1)
+            seq=[data],
+            field_name_for_logging=logging_snippet,
+            stand_in_for_empty_seq=data.__class__(1.1),
         )
         == data
     )
     assert unpack_sequence_of_length_1(
-        seq=[], field_name_for_logging=logging_snippet, stand_in_for_empty_seq=data.__class__(1.1)
+        seq=[],
+        field_name_for_logging=logging_snippet,
+        stand_in_for_empty_seq=data.__class__(1.1),
     ) == data.__class__(1.1)
 
     with pytest.raises(ValueError):
         unpack_sequence_of_length_1(
-            seq=[data, data], field_name_for_logging=logging_snippet, stand_in_for_empty_seq=data.__class__(1.1)
+            seq=[data, data],
+            field_name_for_logging=logging_snippet,
+            stand_in_for_empty_seq=data.__class__(1.1),
         )

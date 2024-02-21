@@ -22,7 +22,10 @@ from uai_openlabel import no_default
 
 @dataclass
 class SomeDataClass:
-    a_field: int = field(default_factory=lambda: no_default(field="SomeDataClass.a_field"), metadata=required)
+    a_field: int = field(
+        default_factory=lambda: no_default(field="SomeDataClass.a_field"),
+        metadata=required,
+    )
 
 
 def test_raises_with_class_and_field_name() -> None:

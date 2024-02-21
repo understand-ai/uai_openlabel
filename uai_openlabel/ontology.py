@@ -41,7 +41,10 @@ class DetailedOntology(JsonSnakeCaseSerializableMixin):
     Section 7.9 of the OpenLABEL standard specification
     """
 
-    uri: URI = field(default_factory=lambda: no_default(field="DetailedOntology.uri"), metadata=required)
+    uri: URI = field(
+        default_factory=lambda: no_default(field="DetailedOntology.uri"),
+        metadata=required,
+    )
 
     # TODO Add validation that boundary_mode must be provided if boundary_Sequence is set
     boundary_sequence: Optional[Sequence[str]] = field(default=None)

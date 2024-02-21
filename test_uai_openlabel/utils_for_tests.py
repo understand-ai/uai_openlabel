@@ -21,7 +21,9 @@ from typing import Any, cast
 def get_absolute_path(path_relative_to_repo_base_dir: str) -> Path:
     cwd = Path(os.getcwd())
 
-    cwd_adjusted_parts = cwd.parts[1 : cwd.parts.index("uai_openlabel") + 1] + Path(path_relative_to_repo_base_dir).parts
+    repo_name = "uai_openlabel"
+    first_occurrence_of_repo_name_from_back = next(i for i in reversed(range(len(cwd.parts))) if cwd.parts[i] == repo_name)
+    cwd_adjusted_parts = cwd.parts[1 : first_occurrence_of_repo_name_from_back + 1] + Path(path_relative_to_repo_base_dir).parts
     cwd_adjusted_file_path = Path("/" + "/".join(cwd_adjusted_parts))
 
     if not cwd_adjusted_file_path.exists():

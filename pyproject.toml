@@ -22,10 +22,6 @@ black = {extras = ["d"], version = "^22.3.0"}
 deepdiff = "^6.7.1"
 ruff = "^0.2.0"
 
-[tool.ruff.lint]
-select = [ "E","F","W","I","N","TRY","RUF" ]
-ignore = [ "E501", "E731", "TRY003", "W291" ]
-
 [[tool.poetry.source]]
 name = "PyPI"
 priority = "default"
@@ -33,3 +29,38 @@ priority = "default"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+
+[tool.black]
+line-length = 128
+target-version = ['py39', 'py310', 'py311']
+extend-exclude = "^/uai_openlabel"
+
+[tool.ruff.lint]
+select = [ "E","F","W","I","N","TRY","RUF" ]
+ignore = [ "E501", "E731", "TRY003", "W291" ]
+
+[tool.mypy]
+# Disallow untyped definitions and calls
+disallow_untyped_calls = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+disallow_untyped_decorators = true
+
+# None and optional handling
+no_implicit_optional = true
+
+# Configuring warnings
+warn_unused_ignores = true
+warn_no_return = true
+warn_return_any = true
+warn_redundant_casts = true
+
+# Misc things
+strict_equality = true
+
+# Config file
+warn_unused_configs = true
+
+

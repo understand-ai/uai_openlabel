@@ -109,12 +109,16 @@ class OpenLabel(JsonSnakeCaseSerializableMixin):
 
     actions: Optional[Mapping[ActionUid, Action]] = field(default=None)
     contexts: Optional[Mapping[ContextUid, Context]] = field(default=None)
-    coordinate_systems: Optional[Mapping[CoordinateSystemUid, CoordinateSystem]] = field(default=None)
+    coordinate_systems: Optional[
+        Mapping[CoordinateSystemUid, CoordinateSystem]
+    ] = field(default=None)
     events: Optional[Mapping[EventUid, Event]] = field(default=None)
     frame_intervals: Optional[Sequence[FrameInterval]] = field(default=None)
     frames: Optional[Mapping[Uid, Frame]] = field(default=None)
     objects: Optional[Mapping[ObjectUid, Object]] = field(default=None)
-    ontologies: Optional[Mapping[OntologyUid, Union[URI, DetailedOntology]]] = field(default=None)
+    ontologies: Optional[Mapping[OntologyUid, Union[URI, DetailedOntology]]] = field(
+        default=None
+    )
     relations: Optional[Mapping[RelationUid, Relation]] = field(default=None)
     resources: Optional[Mapping[ResourceUid, URI]] = field(default=None)
     streams: Optional[Mapping[StreamUid, Stream]] = field(default=None)
@@ -130,9 +134,16 @@ class OpenLabel(JsonSnakeCaseSerializableMixin):
                 transform_from_and_to=("reference", "world"),
                 transform_translation=(1.0, 0.0, 0.0),
                 frame_objects={
-                    Uid("1"): ObjectInFrame.example(toggle_attribute_values=True, cuboid_translation=(1.0, 0.0, 0.0)),
-                    Uid("2"): ObjectInFrame.example(toggle_attribute_values=True, cuboid_translation=(5.0, 1.0, 0.0)),
-                    Uid("3"): ObjectInFrame.example(toggle_attribute_values=True, cuboid_translation=(10.0, 1.0, 0.0)),
+                    Uid("1"): ObjectInFrame.example(
+                        toggle_attribute_values=True, cuboid_translation=(1.0, 0.0, 0.0)
+                    ),
+                    Uid("2"): ObjectInFrame.example(
+                        toggle_attribute_values=True, cuboid_translation=(5.0, 1.0, 0.0)
+                    ),
+                    Uid("3"): ObjectInFrame.example(
+                        toggle_attribute_values=True,
+                        cuboid_translation=(10.0, 1.0, 0.0),
+                    ),
                 },
             ),
             Uid("002"): Frame.example(
@@ -140,9 +151,16 @@ class OpenLabel(JsonSnakeCaseSerializableMixin):
                 transform_from_and_to=("reference", "world"),
                 transform_translation=(1.1, 0.0, 0.0),
                 frame_objects={
-                    Uid("1"): ObjectInFrame.example(toggle_attribute_values=True, cuboid_translation=(1.1, 0.0, 0.0)),
-                    Uid("2"): ObjectInFrame.example(toggle_attribute_values=True, cuboid_translation=(5.1, 1.0, 0.0)),
-                    Uid("3"): ObjectInFrame.example(toggle_attribute_values=True, cuboid_translation=(10.1, 1.0, 0.0)),
+                    Uid("1"): ObjectInFrame.example(
+                        toggle_attribute_values=True, cuboid_translation=(1.1, 0.0, 0.0)
+                    ),
+                    Uid("2"): ObjectInFrame.example(
+                        toggle_attribute_values=True, cuboid_translation=(5.1, 1.0, 0.0)
+                    ),
+                    Uid("3"): ObjectInFrame.example(
+                        toggle_attribute_values=True,
+                        cuboid_translation=(10.1, 1.0, 0.0),
+                    ),
                 },
             ),
             Uid("003"): Frame.example(
@@ -150,9 +168,16 @@ class OpenLabel(JsonSnakeCaseSerializableMixin):
                 transform_from_and_to=("reference", "world"),
                 transform_translation=(1.2, 0.0, 0.0),
                 frame_objects={
-                    Uid("1"): ObjectInFrame.example(toggle_attribute_values=True, cuboid_translation=(1.2, 0.0, 0.0)),
-                    Uid("2"): ObjectInFrame.example(toggle_attribute_values=True, cuboid_translation=(5.1, 1.0, 0.0)),
-                    Uid("3"): ObjectInFrame.example(toggle_attribute_values=True, cuboid_translation=(10.2, 1.0, 0.0)),
+                    Uid("1"): ObjectInFrame.example(
+                        toggle_attribute_values=True, cuboid_translation=(1.2, 0.0, 0.0)
+                    ),
+                    Uid("2"): ObjectInFrame.example(
+                        toggle_attribute_values=True, cuboid_translation=(5.1, 1.0, 0.0)
+                    ),
+                    Uid("3"): ObjectInFrame.example(
+                        toggle_attribute_values=True,
+                        cuboid_translation=(10.2, 1.0, 0.0),
+                    ),
                 },
             ),
         }
@@ -160,23 +185,40 @@ class OpenLabel(JsonSnakeCaseSerializableMixin):
         frame_interval = FrameInterval(frame_start=Uid("1"), frame_end=Uid("3"))
 
         object_data_pointers: dict[AttributeName, ElementDataPointer] = {}
-        attributes_of_dynamic_objects = ObjectData.cuboid_with_dynamic_attributes_example(False, (0.0, 0.0, 0.0))
+        attributes_of_dynamic_objects = (
+            ObjectData.cuboid_with_dynamic_attributes_example(False, (0.0, 0.0, 0.0))
+        )
         for data in attributes_of_dynamic_objects:
-            assert data.name is not None, "All attributes must have a name in this example"
+            assert (
+                data.name is not None
+            ), "All attributes must have a name in this example"
             object_data_pointers[data.name] = ElementDataPointer(
-                frame_intervals=[frame_interval], type=map_data_to_data_pointer_type(data)
+                frame_intervals=[frame_interval],
+                type=map_data_to_data_pointer_type(data),
             )
 
         objects = {
             Uid("1"): Object.car_example(
-                name="ego_vehicle", frame_interval=frame_interval, object_data_pointers=object_data_pointers
+                name="ego_vehicle",
+                frame_interval=frame_interval,
+                object_data_pointers=object_data_pointers,
             ),
-            Uid("2"): Object.car_example(name="car1", frame_interval=frame_interval, object_data_pointers=object_data_pointers),
-            Uid("3"): Object.car_example(name="car2", frame_interval=frame_interval, object_data_pointers=object_data_pointers),
+            Uid("2"): Object.car_example(
+                name="car1",
+                frame_interval=frame_interval,
+                object_data_pointers=object_data_pointers,
+            ),
+            Uid("3"): Object.car_example(
+                name="car2",
+                frame_interval=frame_interval,
+                object_data_pointers=object_data_pointers,
+            ),
         }
 
         coordinate_systems_dict = {
-            "world": CoordinateSystem(parent="", type="scene_cs", children=["reference"]),
+            "world": CoordinateSystem(
+                parent="", type="scene_cs", children=["reference"]
+            ),
             "reference": CoordinateSystem(parent="world", type="sensor_cs"),
         }
         return cls(
@@ -196,7 +238,9 @@ class OpenLabel(JsonSnakeCaseSerializableMixin):
         )
 
     @classmethod
-    def from_dict(cls: type[J], kvs: dict[str, Any], *, infer_missing: bool = False) -> J:
+    def from_dict(
+        cls: type[J], kvs: dict[str, Any], *, infer_missing: bool = False
+    ) -> J:
         """
         Any ASAM OpenLABEL JSON data shall have a root key named openlabel.
         """
@@ -204,7 +248,12 @@ class OpenLabel(JsonSnakeCaseSerializableMixin):
             kvs = kvs["openlabel"]
         return super().from_dict(kvs, infer_missing=infer_missing)
 
-    def to_dict(self, encode_json: bool = False, exclude_none: bool = False, exclude_defaults: bool = False) -> dict:
+    def to_dict(
+        self,
+        encode_json: bool = False,
+        exclude_none: bool = False,
+        exclude_defaults: bool = False,
+    ) -> dict:
         serialized = super().to_dict(encode_json, exclude_none, exclude_defaults)
         with_root_key = {"openlabel": serialized}
         return with_root_key

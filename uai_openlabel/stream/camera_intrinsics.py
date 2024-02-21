@@ -31,10 +31,17 @@ __all__: list[str] = []
 
 @dataclass
 class FisheyeCameraIntrinsics(JsonSnakeCaseSerializableMixin):
-    height_px: Pixel = field(default_factory=lambda: no_default(field="FisheyeCameraIntrinsics.height_px"), metadata=required)
-    width_px: Pixel = field(default_factory=lambda: no_default(field="FisheyeCameraIntrinsics.width_px"), metadata=required)
+    height_px: Pixel = field(
+        default_factory=lambda: no_default(field="FisheyeCameraIntrinsics.height_px"),
+        metadata=required,
+    )
+    width_px: Pixel = field(
+        default_factory=lambda: no_default(field="FisheyeCameraIntrinsics.width_px"),
+        metadata=required,
+    )
     lens_coeffs: Sequence[Number] = field(
-        default_factory=lambda: no_default(field="FisheyeCameraIntrinsics.lens_coeffs"), metadata=required
+        default_factory=lambda: no_default(field="FisheyeCameraIntrinsics.lens_coeffs"),
+        metadata=required,
     )
 
     center_x_px: Optional[Pixel] = field(default=None)
@@ -51,13 +58,25 @@ class FisheyeCameraIntrinsics(JsonSnakeCaseSerializableMixin):
 @dataclass
 class PinholeCameraIntrinsics(JsonSnakeCaseSerializableMixin):
     camera_matrix: Sequence[Pixel] = field(
-        default_factory=lambda: no_default(field="PinholeCameraIntrinsics.camera_matrix"), metadata=required
+        default_factory=lambda: no_default(
+            field="PinholeCameraIntrinsics.camera_matrix"
+        ),
+        metadata=required,
     )
     distortion_coeffs: Sequence[Pixel] = field(
-        default_factory=lambda: no_default(field="PinholeCameraIntrinsics.distortion_coeffs"), metadata=required
+        default_factory=lambda: no_default(
+            field="PinholeCameraIntrinsics.distortion_coeffs"
+        ),
+        metadata=required,
     )
-    height_px: Pixel = field(default_factory=lambda: no_default(field="PinholeCameraIntrinsics.height_px"), metadata=required)
-    width_px: Pixel = field(default_factory=lambda: no_default(field="PinholeCameraIntrinsics.width_px"), metadata=required)
+    height_px: Pixel = field(
+        default_factory=lambda: no_default(field="PinholeCameraIntrinsics.height_px"),
+        metadata=required,
+    )
+    width_px: Pixel = field(
+        default_factory=lambda: no_default(field="PinholeCameraIntrinsics.width_px"),
+        metadata=required,
+    )
 
     def __post_init__(self) -> None:
         if len(self.camera_matrix) != 12:

@@ -41,16 +41,25 @@ class Event(JsonSnakeCaseSerializableMixin):
     Instants in time which have semantic load. events may trigger other events or actions, for example, startsWalking.
     """
 
-    name: str = field(default_factory=lambda: no_default(field="Event.name"), metadata=required)
-    type: str = field(default_factory=lambda: no_default(field="Event.type"), metadata=required)
+    name: str = field(
+        default_factory=lambda: no_default(field="Event.name"), metadata=required
+    )
+    type: str = field(
+        default_factory=lambda: no_default(field="Event.type"), metadata=required
+    )
 
     frame_intervals: Optional[Sequence[FrameInterval]] = field(default=None)
     ontology_uid: Optional[OntologyUid] = field(default=None)
     resource_uid: Optional[ResourceUid] = field(default=None)
     event_data: Optional[Attributes] = field(default=None)
-    event_data_pointers: Optional[Mapping[AttributeName, ElementDataPointer]] = field(default=None)
+    event_data_pointers: Optional[Mapping[AttributeName, ElementDataPointer]] = field(
+        default=None
+    )
 
 
 @dataclass
 class EventInFrame(JsonSnakeCaseSerializableMixin):
-    event_data: Attributes = field(default_factory=lambda: no_default(field="EventInFrame.event_data"), metadata=required)
+    event_data: Attributes = field(
+        default_factory=lambda: no_default(field="EventInFrame.event_data"),
+        metadata=required,
+    )

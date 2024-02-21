@@ -31,7 +31,9 @@ V = TypeVar("V")
 
 
 def unpack_sequence_of_length_1(
-    seq: Union[T, list[T], tuple[T]], field_name_for_logging: str, stand_in_for_empty_seq: Optional[T] = None
+    seq: Union[T, list[T], tuple[T]],
+    field_name_for_logging: str,
+    stand_in_for_empty_seq: Optional[T] = None,
 ) -> T:
     if not isinstance(seq, list) and not isinstance(seq, tuple):
         return seq
@@ -48,7 +50,10 @@ def unpack_sequence_of_length_1(
 
 
 def convert_values(
-    values: Sequence[Any], conversion_target: type[T], dont_convert: Sequence[type[V]], field_name_for_logging: str
+    values: Sequence[Any],
+    conversion_target: type[T],
+    dont_convert: Sequence[type[V]],
+    field_name_for_logging: str,
 ) -> Sequence[Union[T, V]]:
     """No need to add conversion target to dont_convert"""
     extended_dont_convert = [conversion_target] + [t for t in dont_convert]

@@ -48,10 +48,18 @@ class CoordinateSystem(JsonSnakeCaseSerializableMixin):
             custom_cs, any other coordinate system defined by the user.
     """
 
-    parent: CoordinateSystemUid = field(default_factory=lambda: no_default(field="CoordinateSystem.parent"), metadata=required)
-    type: CoordinateSystemType = field(default_factory=lambda: no_default(field="CoordinateSystem.type"), metadata=required)
+    parent: CoordinateSystemUid = field(
+        default_factory=lambda: no_default(field="CoordinateSystem.parent"),
+        metadata=required,
+    )
+    type: CoordinateSystemType = field(
+        default_factory=lambda: no_default(field="CoordinateSystem.type"),
+        metadata=required,
+    )
 
     children: Optional[Sequence[CoordinateSystemUid]] = field(
         default=None
     )  # TODO See 7.8 first json example: child can also be what is defined in 6.4
-    pose_wrt_parent: Optional[Union[Matrix4x4TransformData, QuaternionTransformData, EulerTransformData]] = field(default=None)
+    pose_wrt_parent: Optional[
+        Union[Matrix4x4TransformData, QuaternionTransformData, EulerTransformData]
+    ] = field(default=None)

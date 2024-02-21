@@ -45,7 +45,13 @@ class GeometricDataProtocol(Protocol):
         [RotatedTwoDBoundingBox, 5, float, [int], {}],
         [ThreeDBoundingBoxEuler, 9, float, [int], {}],
         [ThreeDBoundingBoxQuaternion, 10, float, [int], {}],
-        [Poly2D, None, float, [int, str], {"closed": False, "mode": Poly2DMode.Absolute}],
+        [
+            Poly2D,
+            None,
+            float,
+            [int, str],
+            {"closed": False, "mode": Poly2DMode.Absolute},
+        ],
         [Poly3D, None, float, [int], {"closed": False}],
     ],
 )

@@ -33,7 +33,12 @@ class DataclassLike(Protocol):
 
 
 class JsonSnakeCaseSerializableMixin(DataclassLike):
-    def to_dict(self, encode_json: bool = False, exclude_none: bool = False, exclude_defaults: bool = False) -> dict:
+    def to_dict(
+        self,
+        encode_json: bool = False,
+        exclude_none: bool = False,
+        exclude_defaults: bool = False,
+    ) -> dict:
         #  we need to runtime check that we are actually a dataclass here since we can't stop people from inheriting
         # from the mixin without being a dataclass AND statically type-narrow to fulfill the static typing requirements
         if not is_dataclass(self) or not isinstance(self, DataclassLike):
@@ -48,12 +53,20 @@ class JsonSnakeCaseSerializableMixin(DataclassLike):
         )
 
     @classmethod
-    def from_dict(cls: type[T], kvs: dict[str, Any], *, infer_missing: bool = False) -> T:
+    def from_dict(
+        cls: type[T], kvs: dict[str, Any], *, infer_missing: bool = False
+    ) -> T:
         # we need to runtime check that we are actually a dataclass here since we can't stop people from inheriting
         # from the mixin without being a dataclass
         if not is_dataclass(cls):
             raise TypeError("JSONDeserialization is only supported for dataclasses")
 
         return cast(
-            T, apischema.deserialize(aliaser=apischema.utils.to_snake_case, additional_properties=True, data=kvs, type=cls)
+            T,
+            apischema.deserialize(
+                aliaser=apischema.utils.to_snake_case,
+                additional_properties=True,
+                data=kvs,
+                type=cls,
+            ),
         )
