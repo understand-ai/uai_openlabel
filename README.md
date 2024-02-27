@@ -5,6 +5,8 @@ OpenLABEL defines a JSON schema for saving annotations in the context of data la
 
 ## How to use
 
+This library can be installed via pip using `pip install uai_openlabel` or with poetry using `poetry add uai_openlabel`. 
+
 The entry point to the uai_openlabel data structure is `OpenLabel`, importable via `from uai_openlabel import OpenLabel`. 
 To export an example OpenLABEL file and save it to disk, do
 
