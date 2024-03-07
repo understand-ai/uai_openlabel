@@ -23,7 +23,12 @@ from apischema.metadata import required
 from uai_openlabel.serializer import JsonSnakeCaseSerializableMixin
 
 # noinspection PyProtectedMember
-from uai_openlabel.types_and_constants import AttributeName, CoordinateSystemUid, Number
+from uai_openlabel.types_and_constants import (
+    AttributeName,
+    CoordinateSystemUid,
+    Number,
+    ObjectUid,
+)
 
 # noinspection PyProtectedMember
 from uai_openlabel.utils import convert_values, no_default, unpack_sequence_of_length_1
@@ -40,9 +45,7 @@ B = TypeVar("B", bound="BooleanData")
 
 @dataclass
 class BooleanData(JsonSnakeCaseSerializableMixin):
-    val: bool = field(
-        default_factory=lambda: no_default(field="BooleanData.val"), metadata=required
-    )
+    val: bool = field(default_factory=lambda: no_default(field="BooleanData.val"), metadata=required)
 
     attributes: Optional["Attributes"] = field(default=None)
     coordinate_system: Optional[CoordinateSystemUid] = field(default=None)
@@ -91,9 +94,7 @@ N = TypeVar("N", bound="NumberData")
 
 @dataclass
 class NumberData(JsonSnakeCaseSerializableMixin):
-    val: Number = field(
-        default_factory=lambda: no_default(field="NumberData.val"), metadata=required
-    )
+    val: Number = field(default_factory=lambda: no_default(field="NumberData.val"), metadata=required)
 
     attributes: Optional["Attributes"] = field(default=None)
     coordinate_system: Optional[CoordinateSystemUid] = field(default=None)
@@ -140,9 +141,7 @@ T = TypeVar("T", bound="TextData")
 
 @dataclass
 class TextData(JsonSnakeCaseSerializableMixin):
-    val: str = field(
-        default_factory=lambda: no_default(field="TextData.val"), metadata=required
-    )
+    val: str = field(default_factory=lambda: no_default(field="TextData.val"), metadata=required)
 
     attributes: Optional["Attributes"] = field(default=None)
     coordinate_system: Optional[CoordinateSystemUid] = field(default=None)
@@ -156,7 +155,7 @@ class TextData(JsonSnakeCaseSerializableMixin):
         converted_val = convert_values(
             values=[self.val],
             conversion_target=str,
-            dont_convert=[],
+            dont_convert=[ObjectUid],
             field_name_for_logging=field_name_for_logging,
         )[0]
         self.val = converted_val
@@ -205,7 +204,7 @@ class VectorData(JsonSnakeCaseSerializableMixin):
         converted_val = convert_values(
             values=self.val,
             conversion_target=float,
-            dont_convert=[int, str],
+            dont_convert=[int, str, ObjectUid],
             field_name_for_logging=field_name_for_logging,
         )
         self.val = tuple(converted_val)
@@ -262,9 +261,7 @@ class Attributes(JsonSnakeCaseSerializableMixin, Iterable[GenericData]):
         )
 
     @classmethod
-    def dynamic_attributes_example(
-        cls: builtins.type[A], toggle_value: bool = False
-    ) -> A:
+    def dynamic_attributes_example(cls: builtins.type[A], toggle_value: bool = False) -> A:
         """Contains attributes meant to be dynamic. Use the toggle_value switch to vary them."""
         return cls(
             boolean=[BooleanData.dynamic_example(toggle_value)],

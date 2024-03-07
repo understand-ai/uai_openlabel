@@ -18,7 +18,14 @@ from typing import Any, Protocol
 
 import pytest
 
-from uai_openlabel import Attributes, NumberData, ObjectData, TextData
+from uai_openlabel import (
+    Attributes,
+    NumberData,
+    ObjectData,
+    ObjectUid,
+    TextData,
+    VectorData,
+)
 
 
 def test_attributes_iter_yields_all() -> None:
@@ -64,8 +71,7 @@ def test_values_are_converted_from_single_element_sequence(
         assert isinstance(data.val, conversion_source)
 
     # Test data that needs conversion
-    class NotExactlyConversionTarget(conversion_target):
-        ...
+    class NotExactlyConversionTarget(conversion_target): ...
 
     vals_needing_conversion = [NotExactlyConversionTarget(1.1)]
 
@@ -73,3 +79,23 @@ def test_values_are_converted_from_single_element_sequence(
     data = class_name(val=vals_needing_conversion)
     assert len(caplog.messages) == 1 and class_name.__name__ in caplog.messages[0]
     assert isinstance(data.val, conversion_target)
+
+
+def test_object_uid_in_vector_data(caplog: pytest.LogCaptureFixture) -> None:
+    caplog.set_level(logging.INFO)
+    object_uid = [ObjectUid("075c92c1-7375-49b7-9ebe-76c0f1eac398")]
+
+    data = VectorData(val=object_uid, name="example", **{})
+
+    assert isinstance(data, VectorData)
+    assert len(caplog.messages) == 0
+
+
+def test_object_uid_in_text_data(caplog: pytest.LogCaptureFixture) -> None:
+    caplog.set_level(logging.INFO)
+    object_uid = ObjectUid("075c92c1-7375-49b7-9ebe-76c0f1eac398")
+
+    data = TextData(val=object_uid, name="example", **{})
+
+    assert isinstance(data, TextData)
+    assert len(caplog.messages) == 0
