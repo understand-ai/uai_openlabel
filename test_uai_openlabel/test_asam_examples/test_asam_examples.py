@@ -12,7 +12,7 @@
 # LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 # CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-from deepdiff import DeepDiff  # type: ignore
+from deepdiff import DeepDiff
 
 from test_uai_openlabel.utils_for_tests import get_json_content
 from uai_openlabel import OpenLabel
