@@ -86,7 +86,7 @@ def test_object_uid_in_vector_data(caplog: pytest.LogCaptureFixture) -> None:
     caplog.set_level(logging.INFO)
     object_uid = [ObjectUid("075c92c1-7375-49b7-9ebe-76c0f1eac398")]
 
-    data = VectorData(val=object_uid, name="example", **{})
+    data = VectorData(val=object_uid, name="example")
 
     assert isinstance(data, VectorData)
     assert len(caplog.messages) == 0
@@ -96,7 +96,7 @@ def test_object_uid_in_text_data(caplog: pytest.LogCaptureFixture) -> None:
     caplog.set_level(logging.INFO)
     object_uid = ObjectUid("075c92c1-7375-49b7-9ebe-76c0f1eac398")
 
-    data = TextData(val=object_uid, name="example", **{})
+    data = TextData(val=object_uid, name="example")
 
     assert isinstance(data, TextData)
     assert len(caplog.messages) == 0
