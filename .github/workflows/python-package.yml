@@ -29,6 +29,7 @@ jobs:
         python -m ensurepip
         python -m pip install --upgrade pip
         python -m pip install poetry=="1.6.1"
+        python -m pip install build --user
 
     - name: Install dependencies
       shell: bash
@@ -52,3 +53,6 @@ jobs:
     - name: Test with pytest
       run: |
         python -m poetry run python -m pytest -v test_uai_openlabel
+
+    - name: Make sure a binary wheel and a source tarball can be built
+      run: python -m build
