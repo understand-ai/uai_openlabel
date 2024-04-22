@@ -43,9 +43,7 @@ from uai_openlabel.data_types.geometric_data import (
 )
 
 # Don't export this, only the function
-DATA_TO_POINTER_TYPE_MAPPING: dict[
-    type[Union[GenericData, GeometricData]], Union[GenericDataType, GeometricDataType]
-] = {
+DATA_TO_POINTER_TYPE_MAPPING: dict[type[Union[GenericData, GeometricData]], Union[GenericDataType, GeometricDataType]] = {
     # GenericData
     BooleanData: GenericDataType.Boolean,
     NumberData: GenericDataType.Number,
@@ -61,9 +59,7 @@ DATA_TO_POINTER_TYPE_MAPPING: dict[
 }
 
 
-def map_data_to_data_pointer_type(
-    data: Union[GenericData, GeometricData]
-) -> Union[GenericDataType, GeometricDataType]:
+def map_data_to_data_pointer_type(data: Union[GenericData, GeometricData]) -> Union[GenericDataType, GeometricDataType]:
     if data.__class__ not in DATA_TO_POINTER_TYPE_MAPPING:
         raise KeyError(data)
     return DATA_TO_POINTER_TYPE_MAPPING[data.__class__]

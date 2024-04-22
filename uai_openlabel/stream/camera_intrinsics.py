@@ -58,15 +58,11 @@ class FisheyeCameraIntrinsics(JsonSnakeCaseSerializableMixin):
 @dataclass
 class PinholeCameraIntrinsics(JsonSnakeCaseSerializableMixin):
     camera_matrix: Sequence[Pixel] = field(
-        default_factory=lambda: no_default(
-            field="PinholeCameraIntrinsics.camera_matrix"
-        ),
+        default_factory=lambda: no_default(field="PinholeCameraIntrinsics.camera_matrix"),
         metadata=required,
     )
     distortion_coeffs: Sequence[Pixel] = field(
-        default_factory=lambda: no_default(
-            field="PinholeCameraIntrinsics.distortion_coeffs"
-        ),
+        default_factory=lambda: no_default(field="PinholeCameraIntrinsics.distortion_coeffs"),
         metadata=required,
     )
     height_px: Pixel = field(

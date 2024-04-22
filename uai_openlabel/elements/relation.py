@@ -44,12 +44,8 @@ class RdfAgent(JsonSnakeCaseSerializableMixin):
     :param uid: The element UID this RDF agent refers to.
     """
 
-    type: RdfAgentType = field(
-        default_factory=lambda: no_default(field="RdfAgent.type"), metadata=required
-    )
-    uid: ElementUid = field(
-        default_factory=lambda: no_default(field="RdfAgent.uid"), metadata=required
-    )
+    type: RdfAgentType = field(default_factory=lambda: no_default(field="RdfAgent.type"), metadata=required)
+    uid: ElementUid = field(default_factory=lambda: no_default(field="RdfAgent.uid"), metadata=required)
 
 
 @dataclass
@@ -69,12 +65,8 @@ class Relation(JsonSnakeCaseSerializableMixin):
     :param type: The type of a relation defines the class the predicated of the relation corresponds to.
     """
 
-    name: str = field(
-        default_factory=lambda: no_default(field="Relation.name"), metadata=required
-    )
-    type: str = field(
-        default_factory=lambda: no_default(field="Relation.type"), metadata=required
-    )
+    name: str = field(default_factory=lambda: no_default(field="Relation.name"), metadata=required)
+    type: str = field(default_factory=lambda: no_default(field="Relation.type"), metadata=required)
     rdf_objects: Sequence[RdfAgent] = field(
         default_factory=lambda: no_default(field="Relation.rdf_objects"),
         metadata=required,

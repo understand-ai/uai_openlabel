@@ -135,9 +135,7 @@ class ThreeDBoundingBoxQuaternion(JsonSnakeCaseSerializableMixin):
     sz          m       The z-dimension of the cuboid or the z-coordinate.
     """
 
-    val: tuple[
-        Number, Number, Number, Number, Number, Number, Number, Number, Number, Number
-    ] = field(
+    val: tuple[Number, Number, Number, Number, Number, Number, Number, Number, Number, Number] = field(
         default_factory=lambda: no_default(field="ThreeDBoundingBoxQuaternion.val"),
         metadata=required,
     )
@@ -180,9 +178,7 @@ class ThreeDBoundingBoxEuler(JsonSnakeCaseSerializableMixin):
     sz          m       The z-dimension of the cuboid or the z-coordinate.
     """
 
-    val: tuple[
-        Number, Number, Number, Number, Number, Number, Number, Number, Number
-    ] = field(
+    val: tuple[Number, Number, Number, Number, Number, Number, Number, Number, Number] = field(
         default_factory=lambda: no_default(field="ThreeDBoundingBoxEuler.val"),
         metadata=required,
     )
@@ -231,9 +227,7 @@ class Poly2D(JsonSnakeCaseSerializableMixin):
 
     attributes: Optional[Attributes] = field(default=None)
 
-    closed: bool = field(
-        default_factory=lambda: no_default(field="Poly2D.closed"), metadata=required
-    )
+    closed: bool = field(default_factory=lambda: no_default(field="Poly2D.closed"), metadata=required)
     """
     A boolean that defines whether the polyline is closed or not. 
     In case it is closed, it is assumed that the last point of the sequence is connected with the first one.
@@ -245,13 +239,9 @@ class Poly2D(JsonSnakeCaseSerializableMixin):
     hierarchy: Optional[Sequence[int]] = field(default=None)
     """Hierarchy of the 2D polyline in the context of a set of 2D polylines."""
 
-    mode: Poly2DMode = field(
-        default_factory=lambda: no_default(field="Poly2D.mode"), metadata=required
-    )
+    mode: Poly2DMode = field(default_factory=lambda: no_default(field="Poly2D.mode"), metadata=required)
 
-    name: AttributeName = field(
-        default_factory=lambda: no_default(field="Poly2D.name"), metadata=required
-    )
+    name: AttributeName = field(default_factory=lambda: no_default(field="Poly2D.name"), metadata=required)
     """This is a string encoding the name of this object data. It is used as index inside the corresponding object data pointers."""
 
     val: Union[Sequence[Number], Sequence[str]] = field(
@@ -281,9 +271,7 @@ class Poly3D(JsonSnakeCaseSerializableMixin):
 
     attributes: Optional[Attributes] = field(default=None)
 
-    closed: bool = field(
-        default_factory=lambda: no_default(field="Poly3D.closed"), metadata=required
-    )
+    closed: bool = field(default_factory=lambda: no_default(field="Poly3D.closed"), metadata=required)
     """
     A boolean that defines whether the polyline is closed or not. 
     In case it is closed, it is assumed that the last point of the sequence is connected with the first one.
@@ -292,14 +280,10 @@ class Poly3D(JsonSnakeCaseSerializableMixin):
     coordinate_system: Optional[CoordinateSystemUid] = field(default=None)
     """Name of the coordinate system in respect of which this object data is expressed."""
 
-    name: AttributeName = field(
-        default_factory=lambda: no_default(field="Poly3D.name"), metadata=required
-    )
+    name: AttributeName = field(default_factory=lambda: no_default(field="Poly3D.name"), metadata=required)
     """This is a string encoding the name of this object data. It is used as index inside the corresponding object data pointers."""
 
-    val: Sequence[Number] = field(
-        default_factory=lambda: no_default(field="Poly3D.val"), metadata=required
-    )
+    val: Sequence[Number] = field(default_factory=lambda: no_default(field="Poly3D.val"), metadata=required)
     """List of numerical values of the polyline."""
 
     def __post_init__(self) -> None:

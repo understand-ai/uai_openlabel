@@ -45,20 +45,14 @@ class Context(JsonSnakeCaseSerializableMixin):
      - general information about the location, such as Germany or Spain.
     """
 
-    name: str = field(
-        default_factory=lambda: no_default(field="Context.name"), metadata=required
-    )
-    type: str = field(
-        default_factory=lambda: no_default(field="Context.type"), metadata=required
-    )
+    name: str = field(default_factory=lambda: no_default(field="Context.name"), metadata=required)
+    type: str = field(default_factory=lambda: no_default(field="Context.type"), metadata=required)
 
     frame_intervals: Optional[Sequence[FrameInterval]] = field(default=None)
     ontology_uid: Optional[OntologyUid] = field(default=None)
     resource_uid: Optional[ResourceUid] = field(default=None)
     context_data: Optional[Attributes] = field(default=None)
-    context_data_pointers: Optional[Mapping[AttributeName, ElementDataPointer]] = field(
-        default=None
-    )
+    context_data_pointers: Optional[Mapping[AttributeName, ElementDataPointer]] = field(default=None)
 
 
 @dataclass

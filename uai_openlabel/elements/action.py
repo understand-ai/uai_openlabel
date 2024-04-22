@@ -42,20 +42,14 @@ class Action(JsonSnakeCaseSerializableMixin):
     They may be defined for several frame intervals, similar to objects, for example, isWalking.
     """
 
-    name: str = field(
-        default_factory=lambda: no_default(field="Action.name"), metadata=required
-    )
-    type: str = field(
-        default_factory=lambda: no_default(field="Action.type"), metadata=required
-    )
+    name: str = field(default_factory=lambda: no_default(field="Action.name"), metadata=required)
+    type: str = field(default_factory=lambda: no_default(field="Action.type"), metadata=required)
 
     frame_intervals: Optional[Sequence[FrameInterval]] = field(default=None)
     ontology_uid: Optional[OntologyUid] = field(default=None)
     resource_uid: Optional[ResourceUid] = field(default=None)
     action_data: Optional[Attributes] = field(default=None)
-    action_data_pointers: Optional[Mapping[AttributeName, ElementDataPointer]] = field(
-        default=None
-    )
+    action_data_pointers: Optional[Mapping[AttributeName, ElementDataPointer]] = field(default=None)
 
 
 @dataclass

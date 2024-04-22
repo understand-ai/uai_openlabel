@@ -53,9 +53,7 @@ class JsonSnakeCaseSerializableMixin(DataclassLike):
         )
 
     @classmethod
-    def from_dict(
-        cls: type[T], kvs: dict[str, Any], *, infer_missing: bool = False
-    ) -> T:
+    def from_dict(cls: type[T], kvs: dict[str, Any], *, infer_missing: bool = False) -> T:
         # we need to runtime check that we are actually a dataclass here since we can't stop people from inheriting
         # from the mixin without being a dataclass
         if not is_dataclass(cls):

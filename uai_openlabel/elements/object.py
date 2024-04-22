@@ -56,9 +56,7 @@ class ObjectData(Attributes):
     # area_reference: Optional[Sequence[...]] = field(default=None)
     bbox: Optional[Sequence[TwoDBoundingBox]] = field(default=None)
     # binary: Optional[Sequence[...]] = field(default=None)
-    cuboid: Optional[
-        Sequence[Union[ThreeDBoundingBoxEuler, ThreeDBoundingBoxQuaternion]]
-    ] = field(default=None)
+    cuboid: Optional[Sequence[Union[ThreeDBoundingBoxEuler, ThreeDBoundingBoxQuaternion]]] = field(default=None)
     # image: Optional[Sequence[...]] = field(default=None)
     # line_reference: Optional[Sequence[...]] = field(default=None)
     # mat: Optional[Sequence[...]] = field(default=None)
@@ -106,20 +104,14 @@ class Object(JsonSnakeCaseSerializableMixin):
     :param object_data_pointers: Pointers to element data at frames.
     """
 
-    name: str = field(
-        default_factory=lambda: no_default(field="Object.name"), metadata=required
-    )
-    type: str = field(
-        default_factory=lambda: no_default(field="Object.type"), metadata=required
-    )
+    name: str = field(default_factory=lambda: no_default(field="Object.name"), metadata=required)
+    type: str = field(default_factory=lambda: no_default(field="Object.type"), metadata=required)
 
     frame_intervals: Optional[Sequence[FrameInterval]] = field(default=None)
     ontology_uid: Optional[OntologyUid] = field(default=None)
     resource_uid: Optional[ResourceUid] = field(default=None)
     object_data: Optional[ObjectData] = field(default=None)
-    object_data_pointers: Optional[Mapping[AttributeName, ElementDataPointer]] = field(
-        default=None
-    )
+    object_data_pointers: Optional[Mapping[AttributeName, ElementDataPointer]] = field(default=None)
 
     @classmethod
     def car_example(
