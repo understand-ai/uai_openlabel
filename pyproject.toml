@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "uai_openlabel"
-version = "0.3.6"
+version = "0.3.7"
 description = "A library to produce and parse JSONs in the OpenLABEL format."
 license = "MIT"
 authors = ["understand.ai <postmaster@understand.ai>"]
