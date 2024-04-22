@@ -172,9 +172,9 @@ class ThreeDBoundingBoxEuler(JsonSnakeCaseSerializableMixin):
     x           m       The x-coordinate of the 3D position of the center of the cuboid.
     y           m       The y-coordinate of the 3D position of the center of the cuboid.
     z           m       The z-coordinate of the 3D position of the center of the cuboid.
-    rz          rad     Euler angles, rz = yaw.
-    ry          rad     Euler angles, ry = pitch.
     rx          rad     Euler angles, rx = roll.
+    ry          rad     Euler angles, ry = pitch.
+    rz          rad     Euler angles, rz = yaw.
     sx          m       The x-dimension of the cuboid or the x-coordinate.
     sy          m       The y-dimension of the cuboid or the y-coordinate.
     sz          m       The z-dimension of the cuboid or the z-coordinate.
