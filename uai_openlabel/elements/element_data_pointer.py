@@ -43,9 +43,7 @@ class ElementDataPointer(JsonSnakeCaseSerializableMixin):
     )
     """List of frame intervals of the element data pointed by this pointer."""
 
-    attribute_pointers: Optional[Mapping[AttributeName, GenericDataType]] = field(
-        default=None
-    )
+    attribute_pointers: Optional[Mapping[AttributeName, GenericDataType]] = field(default=None)
     """
     This is a JSON object which contains pointers to the attributes of the element data pointed by this pointer. 
     The attributes pointer keys shall be the \"name\" of the attribute of the element data this pointer points to.

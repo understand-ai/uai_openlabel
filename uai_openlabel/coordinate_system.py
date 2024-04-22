@@ -60,6 +60,4 @@ class CoordinateSystem(JsonSnakeCaseSerializableMixin):
     children: Optional[Sequence[CoordinateSystemUid]] = field(
         default=None
     )  # TODO See 7.8 first json example: child can also be what is defined in 6.4
-    pose_wrt_parent: Optional[
-        Union[Matrix4x4TransformData, QuaternionTransformData, EulerTransformData]
-    ] = field(default=None)
+    pose_wrt_parent: Optional[Union[Matrix4x4TransformData, QuaternionTransformData, EulerTransformData]] = field(default=None)

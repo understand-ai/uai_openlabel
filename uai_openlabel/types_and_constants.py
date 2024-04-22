@@ -21,18 +21,14 @@ __all__: list[str] = []
 URI = str
 
 
-UID_PATTERN = re.compile(
-    "^(-?[0-9]+|[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})$"
-)
+UID_PATTERN = re.compile("^(-?[0-9]+|[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})$")
 
 
 class Uid(str):
     def __init__(self, val: str):
         matches_pattern = bool(UID_PATTERN.match(val))
         if not matches_pattern:
-            raise ValueError(
-                f"{val} doesn't match the OpenLABEL UID pattern {UID_PATTERN.pattern}"
-            )
+            raise ValueError(f"{val} doesn't match the OpenLABEL UID pattern {UID_PATTERN.pattern}")
         super().__init__()
 
 

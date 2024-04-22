@@ -99,15 +99,9 @@ class Transform(JsonSnakeCaseSerializableMixin):
     transform_src_to_dst: This is the transform expressed in algebraic form, for example, as a 4x4 matrix enclosing a 3D rotation and a 3D translation between the coordinate systems.
     """
 
-    dst: CoordinateSystemUid = field(
-        default_factory=lambda: no_default(field="Transform.dst"), metadata=required
-    )
-    src: CoordinateSystemUid = field(
-        default_factory=lambda: no_default(field="Transform.src"), metadata=required
-    )
-    transform_src_to_dst: Union[
-        Matrix4x4TransformData, QuaternionTransformData, EulerTransformData
-    ] = field(
+    dst: CoordinateSystemUid = field(default_factory=lambda: no_default(field="Transform.dst"), metadata=required)
+    src: CoordinateSystemUid = field(default_factory=lambda: no_default(field="Transform.src"), metadata=required)
+    transform_src_to_dst: Union[Matrix4x4TransformData, QuaternionTransformData, EulerTransformData] = field(
         default_factory=lambda: no_default(field="Transform.transform_src_to_dst"),
         metadata=required,
     )
@@ -130,7 +124,5 @@ class Transform(JsonSnakeCaseSerializableMixin):
         return cls(
             src=src,
             dst=dst,
-            transform_src_to_dst=Matrix4x4TransformData(
-                matrix4x4=translation_without_rotation
-            ),
+            transform_src_to_dst=Matrix4x4TransformData(matrix4x4=translation_without_rotation),
         )
