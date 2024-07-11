@@ -71,8 +71,7 @@ def test_values_are_converted_from_single_element_sequence(
         assert isinstance(data.val, conversion_source)
 
     # Test data that needs conversion
-    class NotExactlyConversionTarget(conversion_target):
-        ...
+    class NotExactlyConversionTarget(conversion_target): ...
 
     vals_needing_conversion = [NotExactlyConversionTarget(1.1)]
 
