@@ -11,7 +11,7 @@ packages = [{include = "uai_openlabel"}]
 include = ["uai_openlabel/py.typed"]
 
 [tool.poetry.dependencies]
-python = ">=3.9, <3.12"
+python = ">=3.12, <3.13"
 apischema = "^0.18.0"
 
 [tool.poetry.group.dev.dependencies]
@@ -33,7 +33,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.black]
 line-length = 128
-target-version = ['py39', 'py310', 'py311']
+target-version = ['py39', 'py310', 'py311', 'py312']
 extend-exclude = "^/uai_openlabel"
 
 [tool.ruff.lint]
