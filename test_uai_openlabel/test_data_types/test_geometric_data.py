@@ -77,8 +77,7 @@ def test_values_are_converted_and_tested_for_length(
         assert all(isinstance(v, conversion_source) for v in data.val)
 
     # Test data that needs conversion
-    class NotExactlyConversionTarget(conversion_target):
-        ...
+    class NotExactlyConversionTarget(conversion_target): ...
 
     vals_needing_conversion = [NotExactlyConversionTarget(1.1)] * data_length
 

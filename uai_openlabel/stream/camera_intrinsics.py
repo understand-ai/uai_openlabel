@@ -84,5 +84,4 @@ class PinholeCameraIntrinsics(JsonSnakeCaseSerializableMixin):
 
 
 @dataclass
-class CustomCameraIntrinsics(JsonSnakeCaseSerializableMixin):
-    ...
+class CustomCameraIntrinsics(JsonSnakeCaseSerializableMixin): ...
